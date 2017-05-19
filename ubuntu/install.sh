@@ -13,6 +13,7 @@ rm -f "$HOME/.ssh/config"
 cp -f "$PWD/config" "$HOME/.ssh/config"
 
 mkdir -p "$HOME/console"
+mkdir -p "$HOME/.zfunctions/"
 
 # Pure
 rm -rf "$HOME/console/pure"
