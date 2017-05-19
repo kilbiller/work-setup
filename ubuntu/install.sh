@@ -31,3 +31,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/consol
 # Create .zshrc
 rm -f "$HOME/.zshrc"
 cp "$PWD/.zshrc" "$HOME/.zshrc"
+
+# Launch zsh on startup
+rm -f "$HOME/.bashrc"
+cp "$PWD/.bashrc" "$HOME/.bashrc"
