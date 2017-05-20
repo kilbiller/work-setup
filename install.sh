@@ -12,10 +12,14 @@ rm -f "$HOME/.ssh/config"
 cp -f "$PWD/config" "$HOME/.ssh/config"
 
 # Hyper
-rm -f "$HOME/.hyper.js"
-cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
+
 if [ -z "$WINDOWS_USER_DIR" ]; then
+	rm -f "$HOME/.hyper.js"
+	cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
 	sed -i -e "s/shell: 'bash.exe'/shell: ''/g" "$HOME/.hyper.js"
+else
+	rm -f "$WINDOWS_USER_DIR/.hyper.js"
+	cp -f "$PWD/.hyper.js" "$WINDOWS_USER_DIR/.hyper.js"
 fi
 
 mkdir -p "$HOME/console"
