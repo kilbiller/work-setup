@@ -1,19 +1,25 @@
 # Windows user folder
-WINDOWS_USER_DIR="/mnt/c/Users/remy"
+#WINDOWS_USER_DIR="/mnt/c/Users/remy"
 
 apt-get update
 apt-get install zsh -y
 
-# Copy ssh keys
-cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa" "$HOME/.ssh/id_rsa"
-cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"
+# Copy ssh keys when env variable is set
+if [ -z "$WINDOWS_USER_DIR" ]; then
+    cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa" "$HOME/.ssh/id_rsa"
+	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"
+fi  
 
 # Create ssh config
 rm -f "$HOME/.ssh/config"
 cp -f "$PWD/config" "$HOME/.ssh/config"
-
+git@github.com:kilbiller/work-setup.git
 mkdir -p "$HOME/console"
 mkdir -p "$HOME/.zfunctions/"
+
+# Hyper
+rm -f "$HOME/.hyper.js"
+cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
 
 # Pure
 rm -rf "$HOME/console/pure"

@@ -12,5 +12,5 @@
 From hyper :
 
 ```
-git clone https://github.com/kilbiller/work-setup.git ~/work-setup && cd ~/work-setup/ubuntu && chmod u+x install.sh && sudo ./install.sh
+rm -rf ~/work-setup && git clone https://github.com/kilbiller/work-setup.git ~/work-setup && cd ~/work-setup && chmod u+x install.sh && sudo ./install.sh
 ```
