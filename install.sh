@@ -3,11 +3,14 @@
 
 # Ensure .ssh folder exists
 mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
 
 # Copy ssh keys when env variable is set
 if ! [ -z "$WINDOWS_USER_DIR" ]; then
 	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa" "$HOME/.ssh/id_rsa"
+	chmod 600 "$HOME/.ssh/id_rsa"
 	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"
+	chmod 644 "$HOME/.ssh/id_rsa.pub"
 fi
 
 # Create ssh config
