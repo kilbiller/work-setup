@@ -1,6 +1,9 @@
 # Windows user folder
 #WINDOWS_USER_DIR="/mnt/c/Users/remy"
 
+# Ensure .ssh folder exists
+mkdir -p "$HOME/.ssh"
+
 # Copy ssh keys when env variable is set
 if ! [ -z "$WINDOWS_USER_DIR" ]; then
 	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa" "$HOME/.ssh/id_rsa"
@@ -8,7 +11,6 @@ if ! [ -z "$WINDOWS_USER_DIR" ]; then
 fi
 
 # Create ssh config
-mkdir -p "$HOME/.ssh"
 rm -f "$HOME/.ssh/config"
 cp -f "$PWD/config" "$HOME/.ssh/config"
 
