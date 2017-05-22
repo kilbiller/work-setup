@@ -8,6 +8,7 @@ if ! [ -z "$WINDOWS_USER_DIR" ]; then
 fi
 
 # Create ssh config
+mkdir -p "$HOME/.ssh"
 rm -f "$HOME/.ssh/config"
 cp -f "$PWD/config" "$HOME/.ssh/config"
 
