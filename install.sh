@@ -1,6 +1,9 @@
 # Windows user folder
 #WINDOWS_USER_DIR="/mnt/c/Users/remy"
 
+# Allow user to use sudo without having to enter a password everytime
+echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # Ensure .ssh folder exists
 mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
