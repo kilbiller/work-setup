@@ -17,11 +17,9 @@ if ! [ -z "$WINDOWS_USER_DIR" ]; then
 fi
 
 # Create ssh config
-rm -f "$HOME/.ssh/config"
-cp -f "$PWD/config" "$HOME/.ssh/config"
+yes | cp -rf "$PWD/config" "$HOME/.ssh/config"
 
 # Hyper
-
 if [ -z "$WINDOWS_USER_DIR" ]; then
 	rm -f "$HOME/.hyper.js"
 	cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
@@ -48,9 +46,10 @@ rm -rf "$HOME/console/zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/console/zsh-syntax-highlighting"
 
 # Create .zshrc
-rm -f "$HOME/.zshrc"
-cp "$PWD/.zshrc" "$HOME/.zshrc"
+yes | cp -rf "$PWD/.zshrc" "$HOME/.zshrc"
+
+# Create .gitconfig
+yes | cp -rf "$PWD/.gitconfig" "$HOME/.gitconfig"
 
 # Launch zsh on startup
-rm -f "$HOME/.bashrc"
-cp "$PWD/.bashrc" "$HOME/.bashrc"
+yes | cp -rf "$PWD/.bashrc" "$HOME/.bashrc"
