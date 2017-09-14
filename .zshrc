@@ -27,3 +27,6 @@ autoload -U promptinit; promptinit
 prompt pure
 
 source "$HOME/console/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Use windows docker host
+export DOCKER_HOST=tcp://127.0.0.1:2375
