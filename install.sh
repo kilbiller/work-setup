@@ -20,7 +20,7 @@ yes | cp -rf "$PWD/config" "$HOME/.ssh/config"
 if [ -z "$WINDOWS_USER_DIR" ]; then
 	rm -f "$HOME/.hyper.js"
 	cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
-	sed -i -e "s/shell: 'bash.exe'/shell: ''/g" "$HOME/.hyper.js"
+	sed -i -e "s/shell: 'wsl.exe'/shell: ''/g" "$HOME/.hyper.js"
 else
 	rm -f "$WINDOWS_USER_DIR/.hyper.js"
 	cp -f "$PWD/.hyper.js" "$WINDOWS_USER_DIR/.hyper.js"
