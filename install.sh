@@ -47,6 +47,3 @@ yes | cp -rf "$PWD/.zshrc" "$HOME/.zshrc"
 
 # Create .gitconfig
 yes | cp -rf "$PWD/.gitconfig" "$HOME/.gitconfig"
-
-# Launch zsh on startup
-yes | cp -rf "$PWD/.bashrc" "$HOME/.bashrc"
