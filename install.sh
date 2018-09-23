@@ -16,6 +16,9 @@ fi
 # Create ssh config
 yes | cp -rf "$PWD/config" "$HOME/.ssh/config"
 
+# Create .vimrc
+yes | cp -rf "$PWD/.vimrc" "$HOME/.vimrc"
+
 # Hyper
 if [ -z "$WINDOWS_USER_DIR" ]; then
 	rm -f "$HOME/.hyper.js"
