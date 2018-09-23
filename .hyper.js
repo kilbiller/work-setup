@@ -1,11 +1,11 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily:
-      '"Meslo LG M", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      'Hack, "Meslo LG M", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: "rgba(248,28,229,0.8)",
@@ -75,7 +75,7 @@ module.exports = {
     env: {},
 
     // set to false for no bell
-    bell: "SOUND",
+    bell: false,
 
     // if true, selected text will automatically be copied to the clipboard
     copyOnSelect: false
@@ -92,7 +92,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-snazzy"],
+  plugins: ["hyper-snazzy", "nord-hyper"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
