@@ -29,22 +29,6 @@ else
 	cp -f "$PWD/.hyper.js" "$WINDOWS_USER_DIR/.hyper.js"
 fi
 
-mkdir -p "$HOME/console"
-mkdir -p "$HOME/.zfunctions/"
-
-# Pure
-rm -rf "$HOME/console/pure"
-git clone https://github.com/sindresorhus/pure.git "$HOME/console/pure"
-
-rm -f "$HOME/.zfunctions/prompt_pure_setup"
-ln -s "$HOME/console/pure/pure.zsh" "$HOME/.zfunctions/prompt_pure_setup"
-rm -f "$HOME/.zfunctions/async"
-ln -s "$HOME/console/pure/async.zsh" "$HOME/.zfunctions/async"
-
-# zsh-syntax-hightlighting
-rm -rf "$HOME/console/zsh-syntax-highlighting"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/console/zsh-syntax-highlighting"
-
 # Create .zshrc
 yes | cp -rf "$PWD/.zshrc" "$HOME/.zshrc"
 
