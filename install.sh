@@ -1,36 +1,32 @@
-# Windows user folder
-#WINDOWS_USER_DIR="/mnt/c/Users/remy"
+#!/bin/sh
+set -e
+DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
+test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
 
-# Ensure .ssh folder exists
-mkdir -p "$HOME/.ssh"
-chmod 700 "$HOME/.ssh"
-
-# Copy ssh keys when env variable is set
-if ! [ -z "$WINDOWS_USER_DIR" ]; then
-	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa" "$HOME/.ssh/id_rsa"
-	chmod 600 "$HOME/.ssh/id_rsa"
-	cp -f "$WINDOWS_USER_DIR/.ssh/id_rsa.pub" "$HOME/.ssh/id_rsa.pub"
-	chmod 644 "$HOME/.ssh/id_rsa.pub"
-fi
-
-# Create ssh config
-yes | cp -rf "$PWD/config" "$HOME/.ssh/config"
-
-# Create .vimrc
-yes | cp -rf "$PWD/.vimrc" "$HOME/.vimrc"
-
-# Hyper
-if [ -z "$WINDOWS_USER_DIR" ]; then
-	rm -f "$HOME/.hyper.js"
-	cp -f "$PWD/.hyper.js" "$HOME/.hyper.js"
-	sed -i -e "s/shell: 'wsl.exe'/shell: ''/g" "$HOME/.hyper.js"
+# Download repo
+if [ -z $DEV ]; then
+	rm -f /tmp/work-setup.tar.gz
+	curl -sL $DOWNLOAD_URL -o /tmp/work-setup.tar.gz
+	tar -xf /tmp/work-setup.tar.gz -C $TMPDIR
 else
-	rm -f "$WINDOWS_USER_DIR/.hyper.js"
-	cp -f "$PWD/.hyper.js" "$WINDOWS_USER_DIR/.hyper.js"
+	cp -r . $TMPDIR
 fi
 
-# Create .zshrc
-yes | cp -rf "$PWD/.zshrc" "$HOME/.zshrc"
+# Install fonts
+mkdir -p $HOME/.fonts \
+&& cp -r $TMPDIR/fonts $HOME/.fonts \
+&& fc-cache -f -v
 
-# Create .gitconfig
-yes | cp -rf "$PWD/.gitconfig" "$HOME/.gitconfig"
+# Install zsh
+sudo apt-get install -y zsh \
+&& curl -sL git.io/antibody | sh -s \
+&& cp -rf $TMPDIR/.zshrc $HOME/.zshrc
+
+# Install git
+sudo apt-get install -y git \
+&& cp -rf $TMPDIR/.gitconfig $HOME/.gitconfig
+
+# Install hyper
+curl -sL https://github.com/zeit/hyper/releases/download/2.1.2/hyper_2.1.2_amd64.deb -o $TMPDIR/hyper.deb \
+&& sudo apt --fix-broken install -y $TMPDIR/hyper.deb \
+&& cp -rf $TMPDIR/.hyper.js $HOME/.hyper.js

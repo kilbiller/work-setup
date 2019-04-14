@@ -1,5 +1,5 @@
-[push]
-	default = simple
 [user]
 	email = peru.remy@gmail.com
 	name = Rémy Peru
+[core]
+    editor = vim
