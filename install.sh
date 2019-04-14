@@ -7,7 +7,7 @@ test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
 if [ -z $DEV ]; then
 	rm -f /tmp/work-setup.tar.gz
 	curl -sL $DOWNLOAD_URL -o /tmp/work-setup.tar.gz
-	tar -xf /tmp/work-setup.tar.gz -C $TMPDIR
+	tar -xf /tmp/work-setup.tar.gz --strip-components=1 -C $TMPDIR
 else
 	cp -r . $TMPDIR
 fi
