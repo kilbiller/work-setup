@@ -5,7 +5,7 @@ Setup linux machine for dev
 ## Install
 
 ```bash
-curl -sL https://git.io/fjmz8 | sh -s
+curl -sL https://git.io/worksetup | sh -s
 ```
 
 ## Dev
