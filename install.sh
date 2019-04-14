@@ -19,7 +19,7 @@ fi
 # Install fonts
 mkdir -p $HOME/.fonts
 cp -r $TMPDIR/fonts $HOME/.fonts
-fc-cache -f -v
+fc-cache -v
 
 # Install zsh
 sudo apt-get install -y zsh
@@ -32,7 +32,7 @@ cp -rf $TMPDIR/.gitconfig $HOME/.gitconfig
 
 # Install hyper
 curl -sL https://github.com/zeit/hyper/releases/download/${HYPER_VERSION}/hyper_${HYPER_VERSION}_amd64.deb -o $TMPDIR/hyper.deb
-sudo apt --fix-broken install -y $TMPDIR/hyper.deb
+sudo apt-get install -y $TMPDIR/hyper.deb
 cp -rf $TMPDIR/.hyper.js $HOME/.hyper.js
 
 # Install vscode
