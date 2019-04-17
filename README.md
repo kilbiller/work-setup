@@ -18,6 +18,8 @@ echo install.sh | DEV=true sh -s
 
 Tutorial used to set up gpg
 
+Use this one first (should contain everything needed) https://support.yubico.com/support/solutions/articles/15000006420-using-your-yubikey-with-openpgp
+
 https://www.linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/
 
 https://github.com/Yubico/yubikey-personalization/issues/123
