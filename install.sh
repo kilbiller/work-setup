@@ -42,5 +42,11 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 sudo apt-get update
 sudo apt-get install -y code
 
+# Install gpg
+sudo apt-add-repository -y ppa:yubico/stable
+sudo apt-get update
+sudo apt-get install -y pcscd scdaemon gnupg2 pcsc-tools yubikey-manager
+cp -rf $TMPDIR/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
+
 # Cleanup
 rm -rf $TMPDIR

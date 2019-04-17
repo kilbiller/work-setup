@@ -38,7 +38,7 @@ source <(antibody init)
 export ZSH_CACHE_DIR=$HOME/.cache # Fix for some oh-my-zsh plugins
 
 antibody bundle "
-robbyrussell/oh-my-zsh path:plugins/ssh-agent
+robbyrussell/oh-my-zsh path:plugins/gpg-agent
 mafredri/zsh-async
 sindresorhus/pure
 zsh-users/zsh-syntax-highlighting
