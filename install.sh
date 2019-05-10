@@ -2,7 +2,7 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-HYPER_VERSION=2.1.2
+HYPER_VERSION=3.0.2
 
 # Create temp directory
 test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
