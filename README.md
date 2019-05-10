@@ -14,7 +14,7 @@ curl -sL https://git.io/worksetup | sh -s
 echo install.sh | DEV=true sh -s
 ```
 
-## GPG
+## GPG
 
 Tutorial used to set up gpg
 
