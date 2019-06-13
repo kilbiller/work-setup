@@ -55,7 +55,13 @@ robbyrussell/oh-my-zsh path:plugins/helm
 "
 
 # Keybindings
+
+# Enable zsh-history-substring-search on linux & mac
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Fix delete key
 bindkey '^[[3~' delete-char
 bindkey '^[3;5~' delete-char
