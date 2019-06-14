@@ -93,5 +93,9 @@ curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 sudo apt install -y --install-recommends winehq-stable
 
+# Install ansible
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install -y ansible
+
 # Cleanup
 rm -rf $TMPDIR
