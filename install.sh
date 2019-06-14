@@ -38,6 +38,12 @@ curl -sL https://github.com/zeit/hyper/releases/download/${HYPER_VERSION}/hyper_
 sudo apt-get install -y $TMPDIR/hyper.deb
 cp -rf $TMPDIR/.hyper.js $HOME/.hyper.js
 
+# Install google-chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-get update
+sudo apt-get install -y google-chrome-stable
+
 # Install vscode
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $TMPDIR/microsoft.gpg
 sudo install -o root -g root -m 644 $TMPDIR/microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -70,7 +76,22 @@ sudo apt-get install -y nodejs
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
-sudo apt-get install yarn
+sudo apt-get install -y yarn
+
+# Install php
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get install -y php7.3 php7.3-curl php7.3-gd php7.3-xml php7.3-zip
+
+# Install composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+php -r "unlink('composer-setup.php');"
+
+# Install wine
+curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+sudo apt install -y --install-recommends winehq-stable
 
 # Cleanup
 rm -rf $TMPDIR
