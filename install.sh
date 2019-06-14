@@ -24,10 +24,13 @@ cp -r $TMPDIR/fonts $HOME/.fonts
 fc-cache -v
 
 # Install zsh
-export BINDIR=$TMPDIR/.bin
+export BINDIR=/usr/local/bin
 sudo apt-get install -y zsh
-curl -sL git.io/antibody | sh -s
+curl -sL git.io/antibody | sudo -E sh -s
 cp -rf $TMPDIR/.zshrc $HOME/.zshrc
+
+# Install vim
+sudo apt-get install -y vim
 
 # Install git
 sudo apt-get install -y git
