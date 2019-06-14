@@ -80,7 +80,7 @@ sudo apt-get install -y yarn
 
 # Install php
 sudo add-apt-repository ppa:ondrej/php
-sudo apt-get install -y php7.3 php7.3-curl php7.3-gd php7.3-xml php7.3-zip
+sudo apt-get install -y php7.3 php7.3-curl php7.3-gd php7.3-mbstring php7.3-xml php7.3-zip
 
 # Install composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
