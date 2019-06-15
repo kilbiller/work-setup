@@ -5,6 +5,7 @@ DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
 HYPER_VERSION=3.0.2
 DOCKER_COMPOSE_VERSION=1.24.0
 NODEJS_VERSION=10
+PHP_VERSION=7.3
 
 # Create temp directory
 test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
@@ -83,7 +84,7 @@ sudo apt-get install -y yarn
 
 # Install php
 sudo add-apt-repository ppa:ondrej/php
-sudo apt-get install -y php7.3 php7.3-curl php7.3-gd php7.3-mbstring php7.3-xml php7.3-zip
+sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-xml php${PHP_VERSION}-zip
 
 # Install composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
