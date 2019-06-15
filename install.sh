@@ -47,8 +47,8 @@ sudo apt-get install -y $TMPDIR/hyper.deb
 cp -rf $TMPDIR/.hyper.js $HOME/.hyper.js
 
 # Install google-chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
 sudo apt-get update
 sudo apt-get install -y google-chrome-stable
 
@@ -67,7 +67,7 @@ cp -rf $TMPDIR/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
 
 # Install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
@@ -98,7 +98,8 @@ php -r "unlink('composer-setup.php');"
 
 # Install wine
 curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main'
+echo "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/winehq.list
+sudo apt-get update
 sudo apt install -y --install-recommends winehq-stable
 
 # Install ansible
