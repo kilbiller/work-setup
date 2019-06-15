@@ -94,7 +94,7 @@ php -r "unlink('composer-setup.php');"
 
 # Install wine
 curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main'
 sudo apt install -y --install-recommends winehq-stable
 
 # Install ansible
