@@ -6,6 +6,8 @@ HYPER_VERSION=3.0.2
 DOCKER_COMPOSE_VERSION=1.24.0
 NODEJS_VERSION=10
 PHP_VERSION=7.3
+GIT_EMAIL=${GIT_EMAIL:-"peru.remy@gmail.com"}
+GIT_NAME=${GIT_NAME:-"Rémy Peru"}
 
 # Create temp directory
 test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
@@ -36,6 +38,8 @@ sudo apt-get install -y vim
 # Install git
 sudo apt-get install -y git
 cp -rf $TMPDIR/.gitconfig $HOME/.gitconfig
+sed -E -i "s/(email =).*/\1 $GIT_EMAIL/" $HOME/.gitconfig
+sed -E -i "s/(name =).*/\1 $GIT_NAME/" $HOME/.gitconfig
 
 # Install hyper
 curl -sL https://github.com/zeit/hyper/releases/download/${HYPER_VERSION}/hyper_${HYPER_VERSION}_amd64.deb -o $TMPDIR/hyper.deb
