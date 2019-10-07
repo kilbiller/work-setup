@@ -76,6 +76,25 @@ sudo usermod -aG docker $USER
 sudo curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# Install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
+&& chmod +x ./kubectl \
+&& sudo mv ./kubectl /usr/local/bin/kubectl
+
+# Install kustomize
+curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest |\
+  grep browser_download |\
+  grep linux |\
+  cut -d '"' -f 4 |\
+  xargs curl -O -L
+chmod +x kustomize_*_linux_amd64
+sudo mv kustomize_*_linux_amd64 /usr/local/bin/kustomize
+
+# Install minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+&& sudo install minikube-linux-amd64 /usr/local/bin/minikube \
+&& rm minikube-linux-amd64
+
 # Install nodejs
 curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION}.x | sudo -E bash -
 sudo apt-get install -y nodejs
