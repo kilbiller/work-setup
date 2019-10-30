@@ -82,13 +82,17 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 && sudo mv ./kubectl /usr/local/bin/kubectl
 
 # Install kustomize
-curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest |\
+curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |\
   grep browser_download |\
   grep linux |\
   cut -d '"' -f 4 |\
+  grep /kustomize/v |\
+  sort | tail -n 1 |\
   xargs curl -O -L
-chmod +x kustomize_*_linux_amd64
-sudo mv kustomize_*_linux_amd64 /usr/local/bin/kustomize
+tar xzf ./kustomize_v*_linux_amd64.tar.gz
+chmod +x kustomize
+sudo mv kustomize /usr/local/bin/kustomize
+rm kustomize_v*_linux_amd64.tar.gz
 
 # Install minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
