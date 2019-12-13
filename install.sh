@@ -3,7 +3,7 @@ set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
 HYPER_VERSION=3.0.2
-DOCKER_COMPOSE_VERSION=1.24.1
+DOCKER_COMPOSE_VERSION=1.25.0
 NODEJS_VERSION=12
 PHP_VERSION=7.3
 GIT_EMAIL=${GIT_EMAIL:-"peru.remy@gmail.com"}
