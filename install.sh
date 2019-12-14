@@ -6,6 +6,7 @@ HYPER_VERSION=3.0.2
 DOCKER_COMPOSE_VERSION=1.25.0
 NODEJS_VERSION=12
 PHP_VERSION=7.3
+KUBERNETES_VERSION=1.16.1
 GIT_EMAIL=${GIT_EMAIL:-"peru.remy@gmail.com"}
 GIT_NAME=${GIT_NAME:-"Rémy Peru"}
 
@@ -77,7 +78,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOS
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Install kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl \
 && chmod +x ./kubectl \
 && sudo mv ./kubectl /usr/local/bin/kubectl
 
