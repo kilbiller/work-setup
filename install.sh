@@ -61,8 +61,7 @@ sudo apt-get update
 sudo apt-get install -y code
 
 # Install gpg
-sudo apt-add-repository -y ppa:yubico/stable
-sudo apt-get update
+sudo apt-add-repository -y --update ppa:yubico/stable
 sudo apt-get install -y pcscd scdaemon gnupg2 pcsc-tools yubikey-manager
 cp -rf "$TMPDIR"/gpg-agent.conf "$HOME"/.gnupg/gpg-agent.conf
 
@@ -110,7 +109,7 @@ sudo apt-get update
 sudo apt-get install -y yarn
 
 # Install php
-sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository -y --update ppa:ondrej/php
 sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-xml php${PHP_VERSION}-zip
 
 # Install composer
