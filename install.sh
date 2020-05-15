@@ -112,9 +112,8 @@ sudo add-apt-repository -y --update ppa:ondrej/php
 sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-xml php${PHP_VERSION}-zip
 
 # Install composer
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-php -r "unlink('composer-setup.php');"
+php -r "copy('https://getcomposer.org/installer', '$TMPDIR/composer-setup.php');"
+sudo php "$TMPDIR"/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Install wine
 curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
