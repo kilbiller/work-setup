@@ -87,11 +87,10 @@ curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |
   cut -d '"' -f 4 |
   grep /kustomize/v |
   sort | tail -n 1 |
-  xargs curl -O -L
-tar xzf ./kustomize_v*_linux_amd64.tar.gz
-chmod +x kustomize
-sudo mv kustomize /usr/local/bin/kustomize
-rm kustomize_v*_linux_amd64.tar.gz
+  xargs curl -L -o "$TMPDIR"/kustomize.tar.gz
+tar xzf "$TMPDIR"/kustomize.tar.gz -C "$TMPDIR"
+chmod +x "$TMPDIR"/kustomize
+sudo mv "$TMPDIR"/kustomize /usr/local/bin/kustomize
 
 # Install minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 &&
