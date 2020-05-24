@@ -23,6 +23,7 @@ else
 fi
 
 # Install fonts
+sudo apt-get install -y fontconfig
 mkdir -p "$HOME"/.fonts
 cp -r "$TMPDIR"/fonts "$HOME"/.fonts
 fc-cache -v
