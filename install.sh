@@ -64,6 +64,7 @@ sudo apt-get install -y code
 # Install gpg
 sudo apt-add-repository -y --update ppa:yubico/stable
 sudo apt-get install -y pcscd scdaemon gnupg2 pcsc-tools yubikey-manager
+mkdir -p "$HOME"/.gnupg
 cp -rf "$TMPDIR"/gpg-agent.conf "$HOME"/.gnupg/gpg-agent.conf
 
 # Install docker
