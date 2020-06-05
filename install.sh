@@ -111,7 +111,7 @@ sudo apt-get install -y yarn
 
 # Install php
 sudo add-apt-repository -y --update ppa:ondrej/php
-sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-xml php${PHP_VERSION}-zip
+sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-dev php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-mbstring php${PHP_VERSION}-xml php${PHP_VERSION}-zip
 
 # Install composer
 php -r "copy('https://getcomposer.org/installer', '$TMPDIR/composer-setup.php');"
