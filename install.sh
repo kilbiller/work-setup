@@ -22,6 +22,9 @@ else
   cp -r . "$TMPDIR"
 fi
 
+# Use sudo without filling password everytime
+echo "$USER ALL=(ALL) NOPASSWD: ALL" | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/auto_sudo')
+
 # Install fonts
 sudo apt-get install -y fontconfig
 mkdir -p "$HOME"/.fonts
@@ -33,6 +36,9 @@ export BINDIR=/usr/local/bin
 sudo apt-get install -y zsh
 curl -sL git.io/antibody | sudo -E sh -s
 cp -rf "$TMPDIR"/.zshrc "$HOME"/.zshrc
+
+# Change default shell to zsh
+sudo chsh $USER -s $(which zsh)
 
 # Install vim
 sudo apt-get install -y vim
