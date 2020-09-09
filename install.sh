@@ -117,12 +117,6 @@ sudo apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-dev php${PHP_VERSION
 php -r "copy('https://getcomposer.org/installer', '$TMPDIR/composer-setup.php');"
 sudo php "$TMPDIR"/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-# Install wine
-curl -sS https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-echo "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/winehq.list
-sudo apt-get update
-sudo apt install -y --install-recommends winehq-stable
-
 # Install ansible
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install -y ansible
