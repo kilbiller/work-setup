@@ -5,13 +5,13 @@ Setup linux machine for dev
 ## Install
 
 ```bash
-curl -sL https://git.io/worksetup | sh -s
+sh -c "$(curl -sL https://git.io/worksetup)"
 ```
 
 ## Dev
 
 ```bash
-cat install.sh | DEV=true sh -s
+DEV=true sh -c "$(cat install.sh)"
 ```
 
 ## GPG
