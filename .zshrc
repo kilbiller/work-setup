@@ -40,7 +40,7 @@ export ZSH_CACHE_DIR=$HOME/.cache # Fix for some oh-my-zsh plugins
 antibody bundle "
 robbyrussell/oh-my-zsh path:plugins/ssh-agent
 mafredri/zsh-async
-sindresorhus/pure
+sindresorhus/pure branch:main
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
