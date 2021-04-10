@@ -56,6 +56,30 @@ if test -z $(git config --global --get user.email); then
 fi
 git config --global core.editor vim
 
+# gnome terminal (ubuntu default)
+curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-gnome-terminal/develop/src/nord.sh | bash
+
+set_default_profile_by_name() {
+  local name=$1
+  local profiles="$(gsettings get org.gnome.Terminal.ProfilesList list | tr -d "[]\',")"
+  for uuid in "$profiles"; do
+    if [[ "$(gsettings get org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:"${uuid}"/ visible-name)" == "'$name'" ]]; then
+      gsettings set org.gnome.Terminal.ProfilesList default "${uuid}"
+	    return 0
+    fi
+  done
+}
+
+set_default_profile_by_name "Nord"
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
+# Profile settings
+GNOME_TERMINAL_PROFILE=`gsettings get org.gnome.Terminal.ProfilesList default | awk -F \' '{print $2}'`
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ font 'Hack 14'
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ use-system-font false
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ audible-bell false
+
 # hyper
 echo "Installing hyper..."
 if test "$HYPER_VERSION" != $(hyper version) ; then
