@@ -79,6 +79,42 @@ GNOME_TERMINAL_PROFILE=`gsettings get org.gnome.Terminal.ProfilesList default | 
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ font 'Hack 14'
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ use-system-font false
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ audible-bell false
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$GNOME_TERMINAL_PROFILE/ scrollbar-policy 'never'
+
+# Alternative option (load entire config as file)
+#cat <<EOT | dconf load /org/gnome/terminal/
+#[legacy]
+#default-show-menubar=false
+#headerbar=@mb false
+#schema-version=uint32 3
+#
+#[legacy/profiles:]
+#default='09dc1416-e8bd-43c6-a2ad-c37c017d3da2'
+#list=['09dc1416-e8bd-43c6-a2ad-c37c017d3da2']
+#
+#[legacy/profiles:/:09dc1416-e8bd-43c6-a2ad-c37c017d3da2]
+#audible-bell=false
+#background-color='#2E3440'
+#bold-color='#D8DEE9'
+#bold-color-same-as-fg=true
+#cursor-background-color='rgb(216,222,233)'
+#cursor-colors-set=true
+#cursor-foreground-color='rgb(59,66,82)'
+#font='Hack 14'
+#foreground-color='#D8DEE9'
+#highlight-background-color='rgb(136,192,208)'
+#highlight-colors-set=true
+#highlight-foreground-color='rgb(46,52,64)'
+#nord-gnome-terminal-version='0.1.0'
+#palette=['#3B4252', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#88C0D0', '#E5E9F0', '#4C566A', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#8FBCBB', '#ECEFF4']
+#scrollbar-policy='never'
+#use-system-font=false
+#use-theme-background=false
+#use-theme-colors=false
+#use-theme-transparency=false
+#use-transparent-background=false
+#visible-name='Nord'
+#EOT
 
 # hyper
 echo "Installing hyper..."
