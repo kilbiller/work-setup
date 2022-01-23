@@ -75,7 +75,7 @@ local base_config = {
 local windows_config = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	windows_config = {
-		default_prog = {"wsl.exe", "-d", "Ubuntu-18.04"}
+		default_prog = {"wsl.exe", "-d", "Ubuntu-18.04", "--cd", "~"}
 	}
 end
 
