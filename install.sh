@@ -2,7 +2,6 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-HYPER_VERSION=3.0.2
 DOCKER_COMPOSE_VERSION=1.28.6
 NODEJS_VERSION=14
 PHP_VERSION=7.4
@@ -115,18 +114,6 @@ gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profi
 #use-transparent-background=false
 #visible-name='Nord'
 #EOT
-
-# hyper
-echo "Installing hyper..."
-if test "$HYPER_VERSION" != $(hyper version) ; then
-  curl -L https://github.com/zeit/hyper/releases/download/${HYPER_VERSION}/hyper_${HYPER_VERSION}_amd64.deb -o "$TMPDIR"/hyper.deb
-  sudo apt-get install -y "$TMPDIR"/hyper.deb
-  echo "done"
-else
-  echo "already installed"
-fi
-cp -rf "$TMPDIR"/.hyper.js "$HOME"/.hyper.js
-echo "hyper configuration updated"
 
 # google-chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
