@@ -5,7 +5,7 @@ DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
 DOCKER_COMPOSE_VERSION=2.2.3
 NODEJS_VERSION=16
 PHP_VERSION=7.4
-KUBERNETES_VERSION=1.21.0
+KUBERNETES_VERSION=1.23.0
 
 # Create temp directory
 test -z "$TMPDIR" && TMPDIR="$(mktemp -d)"
@@ -110,6 +110,9 @@ else
   echo "already installed"
 fi
 
+# completion
+kubectl completion fish > ~/.config/fish/completions/kubectl.fish
+
 # kustomize
 echo "Installing kustomize..."
 curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |
@@ -123,6 +126,9 @@ curl -s https://api.github.com/repos/kubernetes-sigs/kustomize/releases |
 tar xzf "$TMPDIR"/kustomize.tar.gz -C "$TMPDIR"
 chmod +x "$TMPDIR"/kustomize
 sudo mv "$TMPDIR"/kustomize /usr/local/bin/kustomize
+
+# completion
+kustomize completion fish > ~/.config/fish/completions/kustomize.fish
 
 # minikube
 echo "Installing minikube..."
@@ -141,6 +147,9 @@ curl -LO "https://storage.googleapis.com/minikube/releases/${latest_version}/min
 else
   echo "already installed"
 fi
+
+# completion
+minikube completion fish > ~/.config/fish/completions/minikube.fish
 
 # nodejs
 echo "Installing node-${NODEJS_VERSION}..."
