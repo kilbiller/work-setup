@@ -1,0 +1,21 @@
+AddKeysToAgent yes
+
+Host ankara
+  Hostname 149.202.184.101
+  User ubuntu
+
+Host beyrouth
+  Hostname 149.202.169.156
+  User ubuntu
+
+Host rsb01
+  Hostname 192.168.1.31
+  User ubuntu
+
+Host rsb02
+  Hostname 192.168.1.32
+  User ubuntu
+
+Host rsb03
+  Hostname 192.168.1.33
+  User ubuntu

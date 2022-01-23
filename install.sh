@@ -28,9 +28,15 @@ mkdir -p "$HOME"/.fonts
 cp -r "$TMPDIR"/fonts "$HOME"/.fonts
 fc-cache -v
 
+# ssh
+cp ssh/config "$HOME/.ssh/config"
+
 # Install fish
 sudo add-apt-repository -y --update ppa:fish-shell/release-3
 sudo apt install fish
+mkdir -p "$HOME/.config/fish"
+cp fish/fish_plugins "$HOME/.config/fish/fish_plugins"
+cp fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
 
 # Change default shell
 sudo chsh "$USER" -s "$(which fish)"
