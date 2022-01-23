@@ -1,6 +1,16 @@
 local wezterm = require 'wezterm';
 
-nord = {
+function merge_all(...)
+	local ret = {}
+	for _, tbl in ipairs({...}) do
+	  for k, v in pairs(tbl) do
+		ret[k] = v
+	  end
+	end
+	return ret
+end
+
+local nord = {
 	nord0 = "#2E3440",
 	nord1 = "#3B4252",
 	nord2 = "#434C5E",
@@ -19,13 +29,18 @@ nord = {
 	nord15 = "#B48EAD"
 }
 
-return {
+local base_config = {
 	font = wezterm.font("Hack"),
 	font_size = 14.0,
 	color_scheme = "nord",
 
 	initial_cols = 120,
 	initial_rows = 30,
+
+	window_close_confirmation = "NeverPrompt",
+	keys = {
+		{key="w", mods="CTRL|SHIFT", action=wezterm.action{CloseCurrentTab={confirm=false}}}
+	},
 
 	hide_tab_bar_if_only_one_tab = true,
 
@@ -55,3 +70,15 @@ return {
 		bottom = 5,
 	}
 }
+
+-- Windows only config
+local windows_config = {}
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	windows_config = {
+		default_prog = {"wsl.exe", "-d", "Ubuntu-18.04"}
+	}
+end
+
+local config = merge_all(base_config, windows_config)
+
+return config
