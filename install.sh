@@ -2,7 +2,7 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-DOCKER_COMPOSE_VERSION=2.2.3
+DOCKER_COMPOSE_VERSION=2.4.1
 NODEJS_VERSION=16
 PHP_VERSION=7.4
 KUBERNETES_VERSION=1.23.0
@@ -35,6 +35,7 @@ cp ssh/config "$HOME/.ssh/config"
 sudo add-apt-repository -y --update ppa:fish-shell/release-3
 sudo apt install fish
 mkdir -p "$HOME/.config/fish"
+cp fish/config.fish "$HOME/.config/fish/config.fish"
 cp fish/fish_plugins "$HOME/.config/fish/fish_plugins"
 cp fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
 
