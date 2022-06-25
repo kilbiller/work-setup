@@ -43,7 +43,7 @@ cp "$TMPDIR"/fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/func
 sudo chsh "$USER" -s "$(which fish)"
 
 # Neovim
-sudo add-apt-repository -y --update ppa:neovim-ppa/stable
+sudo add-apt-repository -y --update ppa:neovim-ppa/unstable
 sudo apt-get install -y neovim
 mkdir -p "$HOME/.config/nvim"
 cp "$TMPDIR"/neovim/init.vim "$HOME/.config/neovim/init.vim"
