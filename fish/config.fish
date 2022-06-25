@@ -12,3 +12,8 @@ fish_add_path $ANDROID_HOME/tools/bin
 fish_add_path $ANDROID_HOME/cmdline-tools
 fish_add_path $ANDROID_HOME/cmdline-tools/bin
 fish_add_path $ANDROID_HOME/platform-tools
+
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+
+status --is-interactive; and rbenv init - fish | source

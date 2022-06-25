@@ -2,7 +2,7 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-DOCKER_COMPOSE_VERSION=2.5.0
+DOCKER_COMPOSE_VERSION=2.6.1
 NODEJS_VERSION=16
 PHP_VERSION=7.4
 KUBERNETES_VERSION=1.23.0
@@ -42,8 +42,11 @@ cp "$TMPDIR"/fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/func
 # Change default shell
 sudo chsh "$USER" -s "$(which fish)"
 
-# vim
-sudo apt-get install -y vim
+# Neovim
+sudo add-apt-repository -y --update ppa:neovim-ppa/stable
+sudo apt-get install -y neovim
+mkdir -p "$HOME/.config/nvim"
+cp "$TMPDIR"/neovim/init.vim "$HOME/.config/neovim/init.vim"
 
 # git
 sudo apt-get install -y git
@@ -58,7 +61,7 @@ if test -z "$(git config --global --get user.email)"; then
   git config --global user.email "$git_email"
   git config --global user.name "$git_name"
 fi
-git config --global core.editor vim
+git config --global core.editor nvim
 
 # google-chrome
 if ! grep -q microsoft /proc/version; then # Not in wsl
