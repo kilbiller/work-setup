@@ -46,7 +46,7 @@ sudo chsh "$USER" -s "$(which fish)"
 sudo add-apt-repository -y --update ppa:neovim-ppa/unstable
 sudo apt-get install -y neovim
 mkdir -p "$HOME/.config/nvim"
-cp "$TMPDIR"/neovim/init.vim "$HOME/.config/neovim/init.vim"
+cp "$TMPDIR"/neovim/init.vim "$HOME/.config/nvim/init.vim"
 
 # git
 sudo apt-get install -y git
