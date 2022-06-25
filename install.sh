@@ -45,6 +45,8 @@ sudo chsh "$USER" -s "$(which fish)"
 # Neovim
 sudo add-apt-repository -y --update ppa:neovim-ppa/unstable
 sudo apt-get install -y neovim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 mkdir -p "$HOME/.config/nvim"
 cp "$TMPDIR"/neovim/init.vim "$HOME/.config/nvim/init.vim"
 
