@@ -65,6 +65,9 @@ if test -z "$(git config --global --get user.email)"; then
 fi
 git config --global core.editor nvim
 
+# bat
+sudo apt-get install -y bat
+
 # google-chrome
 if ! grep -q microsoft /proc/version; then # Not in wsl
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
