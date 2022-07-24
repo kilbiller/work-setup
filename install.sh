@@ -74,6 +74,9 @@ unzip -j "$TMPDIR"/exa.zip "bin/exa" -d "$TMPDIR"
 chmod +x "$TMPDIR"/exa
 sudo mv "$TMPDIR"/exa /usr/local/bin/exa
 
+# fd
+sudo apt install -y fd-find
+
 # google-chrome
 if ! grep -q microsoft /proc/version; then # Not in wsl
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
