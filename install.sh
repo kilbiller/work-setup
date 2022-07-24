@@ -2,7 +2,7 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-DOCKER_COMPOSE_VERSION=2.6.1
+DOCKER_COMPOSE_VERSION=2.7.0
 NODEJS_VERSION=16
 PHP_VERSION=7.4
 KUBERNETES_VERSION=1.23.0
