@@ -68,6 +68,12 @@ git config --global core.editor nvim
 # bat
 sudo apt-get install -y bat
 
+# exa
+curl -L -o "$TMPDIR"/exa.zip https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip
+unzip -j "$TMPDIR"/exa.zip "bin/exa" -d "$TMPDIR"
+chmod +x "$TMPDIR"/exa
+sudo mv "$TMPDIR"/exa /usr/local/bin/exa
+
 # google-chrome
 if ! grep -q microsoft /proc/version; then # Not in wsl
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
