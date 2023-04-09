@@ -23,9 +23,9 @@ set -gx PATH "$PNPM_HOME" $PATH
 fish_add_path /usr/local/go/bin
 
 # shortcuts
-abbr -a -U -- cat batcat
-abbr -a -U -- find fdfind
-abbr -a -U -- ls exa
-abbr -a -U -- vim nvim
+abbr -a -- cat batcat
+abbr -a -- find fdfind
+abbr -a -- ls exa
+abbr -a -- vim nvim
 
 status --is-interactive; and rbenv init - fish | source
