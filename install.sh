@@ -2,7 +2,6 @@
 set -e
 
 DOWNLOAD_URL="https://github.com/kilbiller/work-setup/archive/master.tar.gz"
-DOCKER_COMPOSE_VERSION=2.7.0
 NODEJS_VERSION=22
 PHP_VERSION=8.3
 
@@ -67,11 +66,13 @@ git config --global core.editor nvim
 # bat
 sudo apt-get install -y bat
 
-# exa
-curl -L -o "$TMPDIR"/exa.zip https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip
-unzip -j "$TMPDIR"/exa.zip "bin/exa" -d "$TMPDIR"
-chmod +x "$TMPDIR"/exa
-sudo mv "$TMPDIR"/exa /usr/local/bin/exa
+# eza
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
 
 # fd
 sudo apt install -y fd-find
@@ -85,28 +86,11 @@ if ! grep -q microsoft /proc/version; then # Not in wsl
   sudo apt-get install -y code
 fi
 
-# docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-sudo usermod -aG docker "$USER"
-
-# docker-compose
-echo "Installing docker compose ${DOCKER_COMPOSE_VERSION}..."
-if test "$DOCKER_COMPOSE_VERSION" != "$(docker compose version --short)"; then
-  sudo mkdir -p /usr/local/lib/docker/cli-plugins
-  sudo curl -SL https://github.com/docker/compose/releases/download/v${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
-  sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
-  echo "done"
-else
-  echo "already installed"
-fi
-
 # nodejs
 echo "Installing node-${NODEJS_VERSION}..."
-curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION}.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+echo "fnm env --use-on-cd --shell fish | source" > "$HOME/.config/fish/conf.d/fnm.fish"
+fnm install ${NODEJS_VERSION}
 
 # php
 echo "Installing php${PHP_VERSION}..."
