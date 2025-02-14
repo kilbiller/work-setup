@@ -27,6 +27,7 @@ cp -r "$TMPDIR"/fonts "$HOME"/.fonts
 fc-cache -v
 
 # ssh
+mkdir -p "$HOME/.ssh"
 cp "$TMPDIR"/ssh/config "$HOME/.ssh/config"
 
 # Install fish
