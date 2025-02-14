@@ -22,6 +22,9 @@ set -gx PATH "$PNPM_HOME" $PATH
 # go
 fish_add_path /usr/local/go/bin
 
+# fnm
+fish_add_path "$HOME/.local/share/fnm"
+
 # shortcuts
 abbr -a -- cat batcat
 abbr -a -- find fdfind
