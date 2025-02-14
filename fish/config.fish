@@ -27,5 +27,3 @@ abbr -a -- cat batcat
 abbr -a -- find fdfind
 abbr -a -- ls eza
 abbr -a -- vim nvim
-
-status --is-interactive; and rbenv init - fish | source
