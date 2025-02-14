@@ -75,12 +75,12 @@ local base_config = {
 local windows_config = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	local wsl_domains = {
-		{ name = "WSL:Ubuntu-18.04", distribution = "Ubuntu-18.04", default_cwd = "~" }
+		{ name = "WSL:Ubuntu", distribution = "Ubuntu", default_cwd = "~" }
 	}
 
 	windows_config = {
 		wsl_domains = wsl_domains,
-		default_domain = "WSL:Ubuntu-18.04"
+		default_domain = "WSL:Ubuntu"
 	}
 end
 
