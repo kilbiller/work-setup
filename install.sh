@@ -94,7 +94,7 @@ sudo apt-get install -y curl unzip
 curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 mkdir -p "$HOME/.config/fish/conf.d"
 echo "fnm env --use-on-cd --shell fish | source" > "$HOME/.config/fish/conf.d/fnm.fish"
-fnm install ${NODEJS_VERSION}
+"$HOME/.local/share/fnm/fnm" install ${NODEJS_VERSION}
 
 # php
 echo "Installing php${PHP_VERSION}..."
