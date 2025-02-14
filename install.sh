@@ -32,7 +32,7 @@ cp "$TMPDIR"/ssh/config "$HOME/.ssh/config"
 
 # Install fish
 sudo add-apt-repository -y --update ppa:fish-shell/release-3
-sudo apt install fish
+sudo apt install -y fish
 mkdir -p "$HOME/.config/fish"
 cp "$TMPDIR"/fish/config.fish "$HOME/.config/fish/config.fish"
 cp "$TMPDIR"/fish/fish_plugins "$HOME/.config/fish/fish_plugins"
