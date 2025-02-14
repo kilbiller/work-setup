@@ -36,6 +36,7 @@ sudo apt install -y fish
 mkdir -p "$HOME/.config/fish"
 cp "$TMPDIR"/fish/config.fish "$HOME/.config/fish/config.fish"
 cp "$TMPDIR"/fish/fish_plugins "$HOME/.config/fish/fish_plugins"
+mkdir -p "$HOME/.config/fish/functions"
 cp "$TMPDIR"/fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
 
 # Change default shell
