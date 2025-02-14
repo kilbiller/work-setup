@@ -35,6 +35,7 @@ sudo add-apt-repository -y --update ppa:fish-shell/release-3
 sudo apt install -y fish
 mkdir -p "$HOME/.config/fish"
 cp "$TMPDIR"/fish/config.fish "$HOME/.config/fish/config.fish"
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 cp "$TMPDIR"/fish/fish_plugins "$HOME/.config/fish/fish_plugins"
 mkdir -p "$HOME/.config/fish/functions"
 cp "$TMPDIR"/fish/functions/fish_user_key_bindings.fish "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
@@ -49,6 +50,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 mkdir -p "$HOME/.config/nvim"
 cp "$TMPDIR"/neovim/init.vim "$HOME/.config/nvim/init.vim"
+nvim --headless +PlugInstall +qall
 
 # git
 sudo apt-get install -y git
