@@ -1,5 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+
+    # Install fisher
+    if not functions -q fisher; and test -e "$HOME/.config/fish/fish_plugins"
+        curl -sL git.io/fisher | source && fisher update
+    end
 end
 
 # kubernetes
